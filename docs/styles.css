@@ -67,23 +67,35 @@ nav {
 .hero {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    padding: 8rem 2rem 4rem;
+    padding: 10rem 2rem 8rem;
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 1rem;
+    transform: translateY(-1rem);
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 .cta-buttons {
@@ -91,48 +103,98 @@ nav {
     gap: 1rem;
     justify-content: center;
     margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
 .cta-button {
-    padding: 1rem 2rem;
-    border-radius: 25px;
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+    border-radius: 50px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     transition: all 0.3s ease;
-    background-color: #6A0DAD; /* Dark purple for better theme matching */
-    color: white; /* White text for better legibility */
-    border: 2px solid #6A0DAD; /* Border matching the background */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    min-width: clamp(140px, 30vw, 200px);
+    text-align: center;
+    backdrop-filter: blur(10px);
 }
 
 .cta-button:hover {
-    background-color: #8A2BE2; /* Lighter purple on hover */
+    background-color: transparent;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .cta-button.secondary {
     background-color: transparent;
-    border: 2px solid #6A0DAD;
-    color: #6A0DAD;
-}
-
-.cta-button.secondary:hover {
-    background-color: #6A0DAD;
     color: white;
 }
 
-/* Ensure buttons stay on one line on mobile */
+.cta-button.secondary:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* Mobile Optimizations */
 @media (max-width: 768px) {
+    .hero {
+        padding: 8rem 1rem 6rem;
+        min-height: auto;
+    }
+    
+    .hero-content {
+        padding: 2rem 0;
+        transform: translateY(0);
+    }
+    
+    .nav-content {
+        padding: 1rem;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .logo-image {
+        height: 40px;
+        width: auto;
+    }
+    
     .cta-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
     }
-
+    
     .cta-button {
-        width: 200px;
-        text-align: center;
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* Additional mobile adjustments for smaller screens */
+@media (max-width: 480px) {
+    .hero {
+        padding: 7rem 1rem 5rem;
+    }
+    
+    .hero-content {
+        transform: translateY(1rem);
+    }
+    
+    .cta-buttons {
+        margin-bottom: 1rem;
+    }
+    
+    .hero p {
+        margin-bottom: 1.5rem;
     }
 }
 
