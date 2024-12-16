@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gradients -->
+    <defs>
+        <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#6c5ce7"/>
+            <stop offset="100%" style="stop-color:#a8a4e6"/>
+        </linearGradient>
+        <clipPath id="heartClip">
+            <path d="M256 448l-30.29-27.52C118.22 319.87 48 260.65 48 182.57 48 120.91 95.85 72 156.4 72c36.81 0 71.71 17.13 99.6 44.17C284.89 89.13 319.79 72 356.6 72 417.15 72 465 120.91 465 182.57c0 78.08-70.22 137.3-177.71 238.91L256 448z"/>
+        </clipPath>
+    </defs>
+    
+    <!-- Heart shape with clean edges -->
+    <path d="M256 448l-30.29-27.52C118.22 319.87 48 260.65 48 182.57 48 120.91 95.85 72 156.4 72c36.81 0 71.71 17.13 99.6 44.17C284.89 89.13 319.79 72 356.6 72 417.15 72 465 120.91 465 182.57c0 78.08-70.22 137.3-177.71 238.91L256 448z" 
+          fill="url(#heartGradient)"/>
+    
+    <!-- B symbol clipped to heart shape -->
+    <g clip-path="url(#heartClip)">
+        <g transform="translate(126, 140) scale(1.4)">
+            <path d="M120 20
+                     H180
+                     C220 20 220 55 180 90
+                     H120
+                     M120 90
+                     H190
+                     C230 90 230 125 190 160
+                     H120
+                     M120 20
+                     V160
+                     M150 10
+                     V170" 
+                  stroke="white" 
+                  stroke-width="14" 
+                  fill="none"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"/>
+        </g>
+    </g>
+</svg>
