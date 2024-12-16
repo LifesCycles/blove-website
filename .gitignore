@@ -1,31 +1,56 @@
 # Environment variables
 .env
-.env.local
-.env.*.local
-
-# Config files with sensitive data
-config.js
-config.json
+.env.*
+!.env.example
 
 # Dependencies
 node_modules/
-
-# Log files
-*.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Editor directories and files
+# IDE
 .idea/
 .vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+*.swp
+*.swo
 
-# Build files
+# Build output
 dist/
 build/
+out/
 
-# Local development files
-*.local
+# Logs
+logs/
+*.log
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Private keys and secrets
+*.pem
+*.key
+**/private/
+**/secrets/
+config.private.js
+**/credentials.*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Contract artifacts
+artifacts/
+cache/
+typechain/
+
+# Local development
+local/
+development.js
+test.config.js

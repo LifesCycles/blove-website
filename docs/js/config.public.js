@@ -2,9 +2,8 @@
 const CONFIG = {
     // Network configuration
     NETWORK: {
-        ID: 8453,  // Base network ID
-        NAME: 'Base',
-        RPC_URL: 'https://mainnet.base.org',
+        ID: 1,  // Ethereum Mainnet
+        NAME: 'Ethereum Mainnet',
     },
     
     // Contract configuration will be set after deployment
@@ -17,6 +16,13 @@ const CONFIG = {
         CONNECT_OPTIONS: {
             method: 'eth_requestAccounts'
         }
+    },
+    
+    // Share configuration
+    SHARE: {
+        BASE_URL: 'https://lifecycles.github.io/blove-website',
+        TWITTER_TEXT: 'Check out this awesome BLOVE share! ',
+        TELEGRAM_TEXT: 'Check out this awesome BLOVE share! '
     }
 };
 
@@ -25,3 +31,4 @@ Object.freeze(CONFIG);
 Object.freeze(CONFIG.NETWORK);
 Object.freeze(CONFIG.CONTRACT);
 Object.freeze(CONFIG.WALLET);
+Object.freeze(CONFIG.SHARE);

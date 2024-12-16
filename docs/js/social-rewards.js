@@ -97,7 +97,88 @@ class SocialRewards {
     }
 }
 
+class SocialShare {
+    constructor() {
+        this.baseUrl = CONFIG.SHARE.BASE_URL;
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        document.querySelectorAll('.share-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const platform = e.target.dataset.platform;
+                this.shareContent(platform);
+            });
+        });
+    }
+
+    generateShareUrl(referralId = '') {
+        const params = new URLSearchParams();
+        if (referralId) {
+            params.append('ref', referralId);
+        }
+        return `${this.baseUrl}?${params.toString()}`;
+    }
+
+    async shareContent(platform) {
+        try {
+            const shareUrl = this.generateShareUrl(walletHandler.account);
+            const encodedUrl = encodeURIComponent(shareUrl);
+            const encodedText = encodeURIComponent(CONFIG.SHARE[`${platform.toUpperCase()}_TEXT`]);
+            
+            let shareLink = '';
+            
+            switch(platform.toLowerCase()) {
+                case 'twitter':
+                    shareLink = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`;
+                    break;
+                    
+                case 'telegram':
+                    shareLink = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
+                    break;
+                    
+                default:
+                    throw new Error('Unsupported platform');
+            }
+            
+            // Open share window
+            window.open(shareLink, '_blank', 'width=550,height=400');
+            
+            // Track share event
+            this.trackShare(platform, shareUrl);
+            
+        } catch (error) {
+            console.error('Error sharing:', error);
+            alert('Error sharing content. Please try again.');
+        }
+    }
+
+    async trackShare(platform, shareUrl) {
+        try {
+            // Get signature from wallet to verify share
+            if (!walletHandler.account) {
+                throw new Error('Please connect your wallet first');
+            }
+
+            const message = `Share verification\nPlatform: ${platform}\nURL: ${shareUrl}`;
+            const signature = await walletHandler.signMessage(message);
+
+            // This would typically be sent to backend
+            console.log('Share tracked:', {
+                platform,
+                shareUrl,
+                wallet: walletHandler.account,
+                signature
+            });
+
+        } catch (error) {
+            console.error('Error tracking share:', error);
+        }
+    }
+}
+
 // Initialize when document is ready
 document.addEventListener('DOMContentLoaded', () => {
     window.socialRewards = new SocialRewards();
+    const socialShare = new SocialShare();
 });
