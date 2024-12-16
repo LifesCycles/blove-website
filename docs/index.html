@@ -144,16 +144,60 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
         .social-link {
-            background: #f8f9fa;
-            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            width: 140px;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .social-link:hover {
-            background: #8A2BE2;
-            color: white;
-            transform: translateY(-5px);
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .social-link.x {
+            background: #000000;
+        }
+
+        .social-link.telegram {
+            background: #0088cc;
+        }
+
+        .social-link.discord {
+            background: #5865F2;
+        }
+
+        .social-link.github {
+            background: #24292e;
+        }
+
+        .social-link i, .social-link img {
+            font-size: 1.25rem;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .social-link span {
+            font-size: 1rem;
+        }
+
+        .x-logo-small {
+            filter: invert(1);
         }
 
         .requirements-note {
@@ -179,47 +223,6 @@
             vertical-align: middle;
             margin-right: 8px;
             fill: currentColor;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            padding: 12px 24px;
-            margin: 10px 0;
-            border-radius: 50px;
-            background: #f8f9fa;
-            color: #000;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
-        }
-
-        .social-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .social-link.x-share {
-            background: #000;
-            color: #fff;
-        }
-
-        .social-link.x-share:hover {
-            background: #333;
-        }
-
-        .social-link.instagram-share {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: #fff;
-        }
-
-        .social-link.instagram-share:hover {
-            opacity: 0.9;
-        }
-
-        .social-link i, .social-link svg {
-            margin-right: 8px;
-            font-size: 20px;
         }
 
         .platform-icons {
@@ -464,11 +467,9 @@
                                     </div>
                                 </div>
                                 <div class="social-links">
-                                    <a href="#" class="social-link x-share" onclick="socialRewards.shareOnX(event)">
-                                        <svg class="x-logo" viewBox="0 0 300 300">
-                                            <path d="m236.48 35.91-68.63 74.839 81.63 106.14h-36.775l-62.555-81.263-71.485 81.263h-38.133l73.354-83.517-78.537-97.461h36.775l59.537 77.31 68.111-77.31h36.701zm-32.371 25.024h-20.464l-102.7 130.93h20.464l102.7-130.93z"/>
-                                        </svg>
-                                        Share on X
+                                    <a href="#" class="social-link x" onclick="socialRewards.shareOnX(event)">
+                                        <img src="images/x-logo.svg" alt="X (Twitter)" class="x-logo-small">
+                                        <span>X</span>
                                     </a>
                                     <a href="#" class="social-link instagram-share" onclick="socialRewards.copyInstagramShare(event)">
                                         <i class="fab fa-instagram"></i>
@@ -521,9 +522,7 @@
                                     <p><span id="rewards-claimed">0</span>/2</p>
                                     <div class="platform-icons">
                                         <span class="platform-icon">
-                                            <svg class="x-logo-small" viewBox="0 0 300 300">
-                                                <path d="m236.48 35.91-68.63 74.839 81.63 106.14h-36.775l-62.555-81.263-71.485 81.263h-38.133l73.354-83.517-78.537-97.461h36.775l59.537 77.31 68.111-77.31h36.701zm-32.371 25.024h-20.464l-102.7 130.93h20.464l102.7-130.93z"/>
-                                            </svg>
+                                            <img src="images/x-logo.svg" alt="X (Twitter)" class="x-logo-small">
                                         </span>
                                         <span class="platform-icon">
                                             <i class="fab fa-instagram"></i>
@@ -548,19 +547,19 @@
             <div class="container">
                 <h2>Join Our Community</h2>
                 <div class="social-links">
-                    <a href="#" class="social-link scale-in">
-                        <i class="fab fa-x"></i>
+                    <a href="#" class="social-link x">
+                        <img src="images/x-logo.svg" alt="X" class="x-logo-small">
                         <span>X</span>
                     </a>
-                    <a href="#" class="social-link scale-in" style="animation-delay: 0.2s;">
+                    <a href="#" class="social-link telegram">
                         <i class="fab fa-telegram"></i>
                         <span>Telegram</span>
                     </a>
-                    <a href="#" class="social-link scale-in" style="animation-delay: 0.4s;">
+                    <a href="#" class="social-link discord">
                         <i class="fab fa-discord"></i>
                         <span>Discord</span>
                     </a>
-                    <a href="https://github.com/LifesCycles/blove-website" class="social-link scale-in" style="animation-delay: 0.6s;">
+                    <a href="#" class="social-link github">
                         <i class="fab fa-github"></i>
                         <span>GitHub</span>
                     </a>
