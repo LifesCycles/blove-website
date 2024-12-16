@@ -373,31 +373,7 @@ h2 {
 }
 
 /* Community Section */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.social-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: var(--text-color);
-    transition: transform 0.3s;
-}
-
-.social-link:hover {
-    transform: translateY(-5px);
-    color: var(--primary-color);
-}
-
-.social-link i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
+/* Removed all social media styles */
 
 /* Footer */
 footer {
@@ -899,4 +875,73 @@ footer {
     .status-item {
         border-color: rgba(108, 92, 231, 0.2);
     }
+}
+
+.platform-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 2rem;
+}
+
+.platform-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.platform-icon i {
+    font-size: 24px;
+}
+
+/* Official brand colors */
+.platform-icon .fa-telegram {
+    color: #0088cc;
+}
+
+.platform-icon .fa-discord {
+    color: #5865F2;
+}
+
+.platform-icon .fa-github {
+    color: #171515;
+}
+
+.platform-icon .fa-instagram {
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.x-logo-small {
+    width: 24px;
+    height: 24px;
+}
+
+.platform-icon:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.share-platforms .platform-icons {
+    margin-top: 2rem;
+}
+
+.share-platforms .platform-icon {
+    text-decoration: none;
+}
+
+.share-platforms .platform-icon i {
+    font-size: 32px;
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.share-platforms .x-logo-small {
+    width: 32px;
+    height: 32px;
 }

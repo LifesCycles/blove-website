@@ -144,62 +144,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            width: 140px;
-            border-radius: 8px;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .social-link:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
-
-        .social-link.x {
-            background: #000000;
-        }
-
-        .social-link.telegram {
-            background: #0088cc;
-        }
-
-        .social-link.discord {
-            background: #5865F2;
-        }
-
-        .social-link.github {
-            background: #24292e;
-        }
-
-        .social-link i, .social-link img {
-            font-size: 1.25rem;
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        .social-link span {
-            font-size: 1rem;
-        }
-
-        .x-logo-small {
-            filter: invert(1);
-        }
-
         .requirements-note {
             background: #f8f9fa;
             border-radius: 15px;
@@ -223,6 +167,47 @@
             vertical-align: middle;
             margin-right: 8px;
             fill: currentColor;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            margin: 10px 0;
+            border-radius: 50px;
+            background: #f8f9fa;
+            color: #000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .social-icon.x-share {
+            background: #000;
+            color: #fff;
+        }
+
+        .social-icon.x-share:hover {
+            background: #333;
+        }
+
+        .social-icon.instagram-share {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #fff;
+        }
+
+        .social-icon.instagram-share:hover {
+            opacity: 0.9;
+        }
+
+        .social-icon i, .social-icon svg {
+            margin-right: 8px;
+            font-size: 20px;
         }
 
         .platform-icons {
@@ -466,27 +451,15 @@
                                         Remaining Rewards: <span id="platform-rewards-supply">Loading...</span>
                                     </div>
                                 </div>
-                                <div class="social-links">
-                                    <a href="#" class="social-link x" onclick="socialRewards.shareOnX(event)">
-                                        <img src="images/x-logo.svg" alt="X (Twitter)" class="x-logo-small">
-                                        <span>X</span>
+                                
+                                <div class="platform-icons">
+                                    <a href="#" class="platform-icon" onclick="shareOnX()">
+                                        <img src="images/x-logo.svg" alt="X" class="x-logo-small">
                                     </a>
-                                    <a href="#" class="social-link instagram-share" onclick="socialRewards.copyInstagramShare(event)">
+                                    <a href="#" class="platform-icon" onclick="shareOnInstagram()">
                                         <i class="fab fa-instagram"></i>
-                                        Share on Instagram
                                     </a>
                                 </div>
-                            </div>
-
-                            <div class="requirements-note">
-                                <i class="fas fa-info-circle"></i>
-                                <p>How to Earn</p>
-                                <ul>
-                                    <li>Connect your wallet</li>
-                                    <li>Share BLOVE on X or Instagram</li>
-                                    <li>Submit your share URL</li>
-                                    <li>Earn BLOVE rewards</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -546,23 +519,22 @@
         <section id="community" class="section animate-on-scroll">
             <div class="container">
                 <h2>Join Our Community</h2>
-                <div class="social-links">
-                    <a href="#" class="social-link x">
+                <div class="platform-icons">
+                    <span class="platform-icon">
                         <img src="images/x-logo.svg" alt="X" class="x-logo-small">
-                        <span>X</span>
-                    </a>
-                    <a href="#" class="social-link telegram">
+                    </span>
+                    <span class="platform-icon">
                         <i class="fab fa-telegram"></i>
-                        <span>Telegram</span>
-                    </a>
-                    <a href="#" class="social-link discord">
+                    </span>
+                    <span class="platform-icon">
                         <i class="fab fa-discord"></i>
-                        <span>Discord</span>
-                    </a>
-                    <a href="#" class="social-link github">
+                    </span>
+                    <span class="platform-icon">
                         <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
+                    </span>
+                    <span class="platform-icon">
+                        <i class="fab fa-instagram"></i>
+                    </span>
                 </div>
             </div>
         </section>
@@ -704,6 +676,31 @@
                 }, duration / steps);
             }
         });
+    </script>
+
+    <script>
+        function shareOnX() {
+            const text = "Join the future of decentralized communities with @BLOVE! 🚀 #BLOVE #Crypto #Web3";
+            const url = window.location.href;
+            const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+            window.open(shareUrl, '_blank', 'width=550,height=420');
+        }
+
+        function shareOnInstagram() {
+            const text = "Join the future of decentralized communities with @BLOVE! 🚀\n\n#BLOVE #Crypto #Web3";
+            const url = window.location.href;
+            const message = `${text}\n\n${url}`;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = message;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            alert('Caption copied to clipboard! Open Instagram and paste it in your new post.');
+            window.open('https://instagram.com', '_blank');
+        }
     </script>
 
     <script src="js/phase-monitor.js"></script>
