@@ -1,0 +1,196 @@
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(255, 51, 102, 0.3));
+}
+
+.logo-text {
+    background: linear-gradient(135deg, #FF3366 0%, #FF0066 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .logo-image {
+        filter: drop-shadow(0 0 8px rgba(255, 51, 102, 0.5));
+    }
+    
+    .logo-text {
+        text-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+    }
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    opacity: 0.1;
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+.heart::before {
+    content: '♥';
+}
+
+.heart:hover {
+    opacity: 0.2;
+}
+
+.heart.top-left {
+    top: 50px;
+    left: 50px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.heart.top-right {
+    top: 50px;
+    right: 50px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.heart.bottom-left {
+    bottom: 50px;
+    left: 50px;
+    animation: float 7s ease-in-out infinite;
+}
+
+.heart.bottom-right {
+    bottom: 50px;
+    right: 50px;
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .heart {
+        width: 30px;
+        height: 30px;
+        font-size: 2rem;
+    }
+
+    .heart.top-left {
+        top: 20px;
+        left: 20px;
+    }
+
+    .heart.top-right {
+        top: 20px;
+        right: 20px;
+    }
+
+    .heart.bottom-left {
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .heart.bottom-right {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Prevent any text selection */
+.logo-image, .logo-text {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Add more animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s forwards;
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: scaleIn 0.8s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animate sections on scroll */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Token distribution animation */
+.distribution-item .bar {
+    width: 0;
+    transition: width 1.5s ease-out;
+}
+
+.distribution-item.animate .bar {
+    width: var(--percentage);
+}

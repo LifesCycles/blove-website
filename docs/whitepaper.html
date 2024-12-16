@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BLOVE Token Whitepaper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="logo.css">
+    <link rel="stylesheet" href="whitepaper.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .progress-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress {
+            height: 30px;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            transition: width 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                BLOVE
+            </a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" class="active">Whitepaper</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="whitepaper">
+        <header class="wp-header">
+            <h1>BLOVE Token Whitepaper</h1>
+            <p class="version">Version 1.0 - December 2024</p>
+        </header>
+
+        <section id="abstract" class="wp-section">
+            <h2>Abstract</h2>
+            <p>BLOVE token represents a revolutionary approach to combining blockchain technology with community-driven value creation. Built on the Base network, BLOVE aims to create a sustainable and engaging ecosystem that rewards long-term holders while fostering community growth and development.</p>
+        </section>
+
+        <section id="introduction" class="wp-section">
+            <h2>1. Introduction</h2>
+            <div class="subsection">
+                <h3>1.1 Vision</h3>
+                <p>BLOVE envisions a future where blockchain technology serves as a foundation for creating meaningful connections and value within digital communities. Our mission is to build a robust ecosystem that empowers users while maintaining the highest standards of security and transparency.</p>
+            </div>
+            <div class="subsection">
+                <h3>1.2 Problem Statement</h3>
+                <p>The current cryptocurrency landscape often prioritizes short-term gains over sustainable growth, leading to volatile markets and decreased user confidence. Additionally, many projects lack genuine utility and community engagement features that could drive long-term value creation.</p>
+            </div>
+        </section>
+
+        <section id="technical" class="wp-section">
+            <h2>2. Technical Architecture</h2>
+            <div class="subsection">
+                <h3>2.1 Smart Contract</h3>
+                <p>BLOVE token is implemented as an ERC-20 smart contract on the Base network, chosen for its scalability, security, and low transaction costs. The contract includes features such as:</p>
+                <ul>
+                    <li>Standard ERC-20 functionality</li>
+                    <li>Built-in liquidity mechanisms</li>
+                    <li>Community governance capabilities</li>
+                    <li>Transparent transaction processing</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3>2.2 Security Measures</h3>
+                <p>The BLOVE smart contract implements industry-standard security practices and has undergone thorough testing and auditing to ensure the safety of user funds and transactions.</p>
+            </div>
+        </section>
+
+        <section class="tokenomics">
+            <h2>Tokenomics</h2>
+            <div class="tokenomics-grid">
+                <!-- Total Supply Card -->
+                <div class="tokenomics-card supply-card">
+                    <h3>Total Supply</h3>
+                    <div class="supply-amount">
+                        <span class="number">1,000,000</span>
+                        <span class="token">BLOVE</span>
+                    </div>
+                </div>
+
+                <!-- Distribution Chart Card -->
+                <div class="tokenomics-card chart-card">
+                    <h3>Distribution</h3>
+                    <canvas id="distributionChart"></canvas>
+                </div>
+
+                <!-- Token Allocation Chart Card -->
+                <div class="tokenomics-card chart-card">
+                    <h3>Token Allocation</h3>
+                    <canvas id="allocationChart"></canvas>
+                </div>
+
+                <!-- Token Utility Card -->
+                <div class="tokenomics-card utility-card">
+                    <h3>Token Utility</h3>
+                    <div class="utility-grid">
+                        <div class="utility-item">
+                            <i class="fas fa-coins"></i>
+                            <span>Staking Rewards</span>
+                        </div>
+                        <div class="utility-item">
+                            <i class="fas fa-users"></i>
+                            <span>Community Governance</span>
+                        </div>
+                        <div class="utility-item">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Ecosystem Participation</span>
+                        </div>
+                        <div class="utility-item">
+                            <i class="fas fa-water"></i>
+                            <span>Liquidity Provision</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Release Schedule Card -->
+                <div class="tokenomics-card schedule-card">
+                    <h3>Token Release Schedule</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>Public Sale</h4>
+                                <p>10% at TGE</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>Development</h4>
+                                <p>20% at TGE, 10% quarterly</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>Community Rewards</h4>
+                                <p>5% at TGE, 5% quarterly</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>Team</h4>
+                                <p>10% at TGE, 10% quarterly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="wp-section">
+            <h2>4. Roadmap</h2>
+            <div class="roadmap-timeline">
+                <div class="timeline-item">
+                    <h4>December 2024</h4>
+                    <ul>
+                        <li>Token Testing on Base ✓</li>
+                        <li>Website Launch ✓</li>
+                        <li>Initial Community Building</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4>January 2025</h4>
+                    <ul>
+                        <li>Marketing Campaign</li>
+                        <li>DEX Listings</li>
+                        <li>Community Growth</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4>February 2025</h4>
+                    <ul>
+                        <li>Staking Platform</li>
+                        <li>Partnership Development</li>
+                        <li>Utility Expansion</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4>March 2025</h4>
+                    <ul>
+                        <li>Governance Implementation</li>
+                        <li>Additional Exchange Listings</li>
+                        <li>Ecosystem Growth</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="wp-section">
+            <h2>5. Conclusion</h2>
+            <p>BLOVE token represents a significant step forward in creating a sustainable and community-driven cryptocurrency ecosystem. By focusing on long-term value creation, robust technical architecture, and meaningful utility, BLOVE aims to set new standards for blockchain projects while fostering a strong and engaged community.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 BLOVE Token. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Distribution Chart
+        const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+        new Chart(distributionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Platform Rewards', 'Liquidity Pool', 'Ecosystem Development', 'Team Allocation', 'Community Treasury'],
+                datasets: [{
+                    data: [20, 30, 20, 15, 15],
+                    backgroundColor: [
+                        '#8A2BE2',
+                        '#9B4DEB',
+                        '#AC6DF4',
+                        '#BD8DFD',
+                        '#CEADFF'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            }
+        });
+
+        // Allocation Chart
+        const allocationCtx = document.getElementById('allocationChart').getContext('2d');
+        new Chart(allocationCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Public Sale', 'Development', 'Community Rewards', 'Team', 'Marketing'],
+                datasets: [{
+                    data: [40, 20, 15, 15, 10],
+                    backgroundColor: [
+                        '#8A2BE2',
+                        '#9B4DEB',
+                        '#AC6DF4',
+                        '#BD8DFD',
+                        '#CEADFF'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            }
+        });
+    });
+    </script>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+
+    <style>
+    .tokenomics {
+        padding: 2rem;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .tokenomics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .tokenomics-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .tokenomics-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .supply-card {
+        text-align: center;
+    }
+
+    .supply-amount {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #8A2BE2;
+        margin: 1rem 0;
+    }
+
+    .utility-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .utility-item {
+        text-align: center;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .utility-item:hover {
+        background: #8A2BE2;
+        color: white;
+    }
+
+    .utility-item i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #8A2BE2;
+    }
+
+    .utility-item:hover i {
+        color: white;
+    }
+
+    .timeline {
+        position: relative;
+        margin-top: 1rem;
+    }
+
+    .timeline-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-left: 3px solid #8A2BE2;
+        position: relative;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -8px;
+        top: 50%;
+        width: 13px;
+        height: 13px;
+        background: #8A2BE2;
+        border-radius: 50%;
+    }
+
+    .timeline-content {
+        margin-left: 1rem;
+    }
+
+    .timeline-content h4 {
+        margin: 0;
+        color: #8A2BE2;
+    }
+
+    .timeline-content p {
+        margin: 0.5rem 0 0;
+        color: #666;
+    }
+
+    @media (max-width: 768px) {
+        .tokenomics-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .utility-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
+</body>
+</html>

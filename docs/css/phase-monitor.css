@@ -1,0 +1,343 @@
+.phase-monitor {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95));
+    position: relative;
+    overflow: hidden;
+}
+
+.phase-monitor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/pattern.png') repeat;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.phase-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.phase-header h2 {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #00ff00, #00aa00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.phase-header p {
+    color: #ccc;
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.phases-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.phases-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(0, 255, 0, 0.2);
+    transform: translateX(-50%);
+}
+
+.phase-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    width: calc(50% - 30px);
+    margin-left: auto;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.phase-card.animate-on-scroll {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.phase-card:nth-child(odd) {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.phase-card::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 30px;
+    height: 2px;
+    background: rgba(0, 255, 0, 0.2);
+}
+
+.phase-card:nth-child(odd)::before {
+    right: -30px;
+}
+
+.phase-card:nth-child(even)::before {
+    left: -30px;
+}
+
+.phase-icon {
+    position: absolute;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 255, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    border: 2px solid rgba(0, 255, 0, 0.2);
+}
+
+.phase-card:nth-child(odd) .phase-icon {
+    right: -50px;
+}
+
+.phase-card:nth-child(even) .phase-icon {
+    left: -50px;
+}
+
+.phase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+}
+
+.phase-card.active {
+    border-color: #00ff00;
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 0, 0, 0.3));
+}
+
+.phase-card.governance {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.3));
+}
+
+.phase-content {
+    position: relative;
+}
+
+.phase-card h3 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status {
+    font-size: 0.7em;
+    padding: 5px 10px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status.active {
+    background: rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.label {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.value {
+    color: #fff;
+    font-weight: 600;
+}
+
+.phase-description {
+    margin: 20px 0;
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 0.95em;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ccc;
+}
+
+.feature-item i {
+    color: #00ff00;
+    font-size: 0.8em;
+}
+
+.governance-info {
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.governance-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.governance-header i {
+    color: #ffd700;
+    font-size: 1.2em;
+}
+
+.governance-header h4 {
+    color: #ffd700;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.governance-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.governance-info li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ccc;
+    margin: 10px 0;
+}
+
+.governance-info li i {
+    color: #ffd700;
+    font-size: 0.9em;
+}
+
+.progress-container {
+    margin-top: 25px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff00, #00aa00);
+    transition: width 0.6s ease;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.85em;
+}
+
+.progress-text {
+    color: #00ff00;
+}
+
+.next-phase {
+    color: #888;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 968px) {
+    .phase-header h2 {
+        font-size: 2.5em;
+    }
+    
+    .phases-timeline::before {
+        left: 20px;
+    }
+    
+    .phase-card {
+        width: calc(100% - 50px);
+        margin-left: 50px !important;
+    }
+    
+    .phase-card::before {
+        left: -30px !important;
+    }
+    
+    .phase-icon {
+        left: -50px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .phase-header h2 {
+        font-size: 2em;
+    }
+    
+    .phase-card {
+        padding: 20px;
+    }
+    
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .value {
+        font-size: 1.1em;
+    }
+}
