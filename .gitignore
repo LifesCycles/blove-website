@@ -41,9 +41,18 @@ config.private.js
 *.temp
 .cache/
 
-# Test coverage
+# Test coverage and reports
 coverage/
 .nyc_output/
+test-results/
+*.lcov
+.coverage.*
+junit.xml
+reports/
+
+# Test temp files
+*.test.js.snap
+__snapshots__/
 
 # Contract artifacts
 artifacts/

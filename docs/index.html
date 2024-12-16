@@ -170,6 +170,118 @@
             background: #f8f9fa;
             border: 1px solid #e9ecef;
         }
+
+        /* X Logo Styles */
+        .x-logo {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            fill: currentColor;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            margin: 10px 0;
+            border-radius: 50px;
+            background: #f8f9fa;
+            color: #000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .social-link.x-share {
+            background: #000;
+            color: #fff;
+        }
+
+        .social-link.x-share:hover {
+            background: #333;
+        }
+
+        .social-link.instagram-share {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #fff;
+        }
+
+        .social-link.instagram-share:hover {
+            opacity: 0.9;
+        }
+
+        .social-link i, .social-link svg {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+
+        .platform-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 4px;
+        }
+        
+        .platform-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px;
+        }
+
+        .x-logo-small {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .platform-icon .fa-instagram {
+            font-size: 16px;
+            background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .rewards-progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .rewards-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .rewards-phase {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .platform-rewards-supply {
+            font-size: 0.9em;
+            color: #a0aec0;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -331,34 +443,36 @@
                         </div>
                         <div class="rewards-content">
                             <ul class="rewards-features">
-                                <li><i class="fas fa-gem"></i> Earn 100 BLOVE per verified share</li>
+                                <li><i class="fas fa-gem"></i> Earn 0.25 BLOVE per verified share</li>
                                 <li><i class="fas fa-shield-alt"></i> Secure verification system</li>
                                 <li><i class="fas fa-clock"></i> 24-hour reward interval</li>
-                                <li><i class="fas fa-chart-line"></i> Up to 5 rewards per wallet</li>
+                                <li><i class="fas fa-chart-line"></i> Up to 2 rewards per wallet (1 per platform)</li>
                             </ul>
                             
                             <div class="share-platforms">
-                                <h4>Share BLOVE</h4>
+                                <h4>Share & Earn BLOVE</h4>
+                                <div class="rewards-info">
+                                    <div class="rewards-phase">
+                                        <span id="current-phase">Phase 1</span>
+                                        <span class="reward-amount">0.25 BLOVE</span> per share
+                                    </div>
+                                    <div class="rewards-progress-container">
+                                        <div id="rewards-progress" class="rewards-progress" style="width: 100%"></div>
+                                    </div>
+                                    <div class="platform-rewards-supply">
+                                        Remaining Rewards: <span id="platform-rewards-supply">Loading...</span>
+                                    </div>
+                                </div>
                                 <div class="social-links">
-                                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20BLOVE%20-%20A%20community-driven%20token%20on%20Base%20network!%20%23BLOVE%20%23Base%20%23Crypto&url=https://blove.com" 
-                                       class="social-link" target="_blank" rel="noopener noreferrer">
-                                        <i class="fab fa-x-twitter"></i>
-                                        <span>Share on X</span>
+                                    <a href="#" class="social-link x-share" onclick="socialRewards.shareOnX(event)">
+                                        <svg class="x-logo" viewBox="0 0 300 300">
+                                            <path d="m236.48 35.91-68.63 74.839 81.63 106.14h-36.775l-62.555-81.263-71.485 81.263h-38.133l73.354-83.517-78.537-97.461h36.775l59.537 77.31 68.111-77.31h36.701zm-32.371 25.024h-20.464l-102.7 130.93h20.464l102.7-130.93z"/>
+                                        </svg>
+                                        Share on X
                                     </a>
-                                    <a href="https://t.me/share/url?url=https://blove.com&text=Check%20out%20BLOVE%20-%20A%20community-driven%20token%20on%20Base%20network!" 
-                                       class="social-link" target="_blank" rel="noopener noreferrer">
-                                        <i class="fab fa-telegram"></i>
-                                        <span>Share on Telegram</span>
-                                    </a>
-                                    <a href="https://discord.com/channels/@me" 
-                                       class="social-link" target="_blank" rel="noopener noreferrer">
-                                        <i class="fab fa-discord"></i>
-                                        <span>Join Discord</span>
-                                    </a>
-                                    <a href="https://github.com/BLOVE-Token" 
-                                       class="social-link" target="_blank" rel="noopener noreferrer">
-                                        <i class="fab fa-github"></i>
-                                        <span>View on GitHub</span>
+                                    <a href="#" class="social-link instagram-share" onclick="socialRewards.copyInstagramShare(event)">
+                                        <i class="fab fa-instagram"></i>
+                                        Share on Instagram
                                     </a>
                                 </div>
                             </div>
@@ -368,9 +482,9 @@
                                 <p>How to Earn</p>
                                 <ul>
                                     <li>Connect your wallet</li>
-                                    <li>Share BLOVE on social media</li>
-                                    <li>Submit your wallet address</li>
-                                    <li>Receive rewards after verification</li>
+                                    <li>Share BLOVE on X or Instagram</li>
+                                    <li>Submit your share URL</li>
+                                    <li>Earn BLOVE rewards</li>
                                 </ul>
                             </div>
                         </div>
@@ -402,11 +516,18 @@
                         
                         <div class="share-status">
                             <div class="status-card">
-                                <div class="status-item">
-                                    <i class="fas fa-gem"></i>
-                                    <div class="status-text">
-                                        <label>Rewards Claimed</label>
-                                        <span id="rewardsClaimed">0/5</span>
+                                <div class="rewards-status">
+                                    <h5>Rewards Claimed</h5>
+                                    <p><span id="rewards-claimed">0</span>/2</p>
+                                    <div class="platform-icons">
+                                        <span class="platform-icon">
+                                            <svg class="x-logo-small" viewBox="0 0 300 300">
+                                                <path d="m236.48 35.91-68.63 74.839 81.63 106.14h-36.775l-62.555-81.263-71.485 81.263h-38.133l73.354-83.517-78.537-97.461h36.775l59.537 77.31 68.111-77.31h36.701zm-32.371 25.024h-20.464l-102.7 130.93h20.464l102.7-130.93z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="platform-icon">
+                                            <i class="fab fa-instagram"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="status-item">
@@ -589,6 +710,7 @@
     <script src="js/phase-monitor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
     <script src="js/config.public.js"></script>
+    <script src="js/rewards-monitor.js"></script>
     <script src="js/contract-abi.js"></script>
     <script src="js/wallet-handler.js"></script>
 </body>
