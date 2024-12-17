@@ -285,22 +285,42 @@
                 <li><a href="#tokenomics">Tokenomics</a></li>
                 <li><a href="whitepaper.html">Whitepaper</a></li>
             </ul>
+            <ul class="quick-links-nav">
+                <li>
+                    <a href="#phase-monitor">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Phases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#share-rewards">
+                        <i class="fas fa-gift"></i>
+                        <span>Rewards</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#community">
+                        <i class="fas fa-users"></i>
+                        <span>Community</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content fade-in">
-            <h1>BLOVE Token</h1>
-            <p>Blockchain Love - Empowering Communities Through Decentralized Governance</p>
-            <div class="cta-buttons">
-                <a href="#tokenomics" class="cta-button">Learn More</a>
-                <a href="whitepaper.html" class="cta-button secondary">Read Whitepaper</a>
-                <a href="https://sepolia.basescan.org/token/0x0862036DFA5448F626ADbFd12E71df6b174EF499" class="cta-button secondary" target="_blank">View Contract</a>
-            </div>
-        </div>
-    </header>
-
     <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>BLOVE Token</h1>
+                <p>Blockchain Love - Empowering Communities Through Decentralized Governance</p>
+                <div class="cta-buttons">
+                    <a href="#about" class="cta-button">Learn More</a>
+                    <a href="#whitepaper" class="cta-button secondary">Read Whitepaper</a>
+                    <a href="#contract" class="cta-button secondary">View Contract</a>
+                </div>
+            </div>
+        </section>
+
         <section id="about" class="section animate-on-scroll">
             <div class="container">
                 <h2>About BLOVE</h2>
@@ -552,6 +572,28 @@
             </div>
         </section>
     </main>
+    
+    <!-- Mobile Quick Links Ribbon -->
+    <ul class="quick-links-nav mobile-ribbon">
+        <li>
+            <a href="#phase-monitor" title="Phases">
+                <i class="fas fa-chart-line"></i>
+                <span>Phases</span>
+            </a>
+        </li>
+        <li>
+            <a href="#share-rewards" title="Rewards">
+                <i class="fas fa-gift"></i>
+                <span>Rewards</span>
+            </a>
+        </li>
+        <li>
+            <a href="#community" title="Community">
+                <i class="fas fa-users"></i>
+                <span>Community</span>
+            </a>
+        </li>
+    </ul>
 
     <footer>
         <div class="container">
@@ -675,6 +717,53 @@
                     numberElement.textContent = Math.floor(currentNumber).toLocaleString();
                 }, duration / steps);
             }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const quickLinks = document.querySelector('.quick-links');
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Handle scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    quickLinks.classList.add('scrolled');
+                } else {
+                    quickLinks.classList.remove('scrolled');
+                }
+                
+                // Update active section
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                // Update active link
+                document.querySelectorAll('.quick-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scroll
+            document.querySelectorAll('.quick-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 
