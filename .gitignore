@@ -9,6 +9,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Backend directory
+/backend/
+
 # IDE
 .idea/
 .vscode/
@@ -63,3 +66,5 @@ typechain/
 local/
 development.js
 test.config.js
+
+/test/rewards-monitor.test.js

@@ -64,90 +64,117 @@ class PhaseMonitor {
             }
         ];
         
+        // Cache templates
+        this.templates = {
+            featureItem: feature => `
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span>${feature}</span>
+                </div>`,
+            governanceInfo: `
+                <div class="governance-info">
+                    <div class="governance-header">
+                        <i class="fas fa-users-cog"></i>
+                        <h4>Community Governance</h4>
+                    </div>
+                    <p>Shape the future of BLOVE through:</p>
+                    <ul>
+                        <li><i class="fas fa-vote-yea"></i> Democratic voting</li>
+                        <li><i class="fas fa-comments"></i> Proposal system</li>
+                        <li><i class="fas fa-landmark"></i> Treasury management</li>
+                    </ul>
+                </div>`,
+            progressContainer: (progress, priceThreshold) => `
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: ${progress}%"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-text">${progress}% Complete</span>
+                        <span class="next-phase">Next Phase at ${priceThreshold}</span>
+                    </div>
+                </div>`
+        };
+        
         this.init();
     }
     
-    init() {
-        const phaseMonitor = document.getElementById('phase-monitor');
-        if (!phaseMonitor) return;
+    createPhaseCard(phase, index) {
+        const phaseCard = document.createElement('div');
+        phaseCard.className = `phase-card animate-on-scroll ${phase.active ? 'active' : ''} ${phase.isGovernance ? 'governance' : ''}`;
+        phaseCard.style.animationDelay = `${index * 0.2}s`;
         
-        // Add title and description
-        phaseMonitor.innerHTML = `
-            <div class="phase-header animate-on-scroll">
-                <h2>Evolution Phases</h2>
-                <p>Journey to Community-Driven Governance</p>
-            </div>
-            <div class="phases-timeline"></div>
-        `;
+        const features = phase.features.map(this.templates.featureItem).join('');
+        const governanceSection = phase.isGovernance ? this.templates.governanceInfo : '';
+        const progressSection = !phase.isGovernance ? this.templates.progressContainer(phase.progress, phase.priceThreshold) : '';
         
-        const timeline = phaseMonitor.querySelector('.phases-timeline');
-        
-        // Add each phase
-        this.phases.forEach((phase, index) => {
-            const phaseCard = document.createElement('div');
-            phaseCard.className = `phase-card animate-on-scroll ${phase.active ? 'active' : ''} ${phase.isGovernance ? 'governance' : ''}`;
-            phaseCard.style.animationDelay = `${index * 0.2}s`;
-            
-            phaseCard.innerHTML = `
-                <div class="phase-icon">${phase.icon}</div>
-                <div class="phase-content">
-                    <div class="phase-header">
-                        <h3>Phase ${phase.id}: ${phase.name}</h3>
-                        ${phase.active ? '<span class="status active">Current Phase</span>' : ''}
-                    </div>
-                    <div class="phase-details">
-                        <div class="detail-row">
-                            <span class="label">Price Target</span>
-                            <span class="value">${phase.priceThreshold}</span>
-                        </div>
-                        <div class="detail-row">
-                            <span class="label">Supply Boost</span>
-                            <span class="value">${phase.supplyInjection} BLOVE</span>
-                        </div>
-                        <p class="phase-description">${phase.description}</p>
-                        <div class="feature-list">
-                            ${phase.features.map(feature => `
-                                <div class="feature-item">
-                                    <i class="fas fa-check"></i>
-                                    <span>${feature}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                        ${phase.isGovernance ? `
-                            <div class="governance-info">
-                                <div class="governance-header">
-                                    <i class="fas fa-users-cog"></i>
-                                    <h4>Community Governance</h4>
-                                </div>
-                                <p>Shape the future of BLOVE through:</p>
-                                <ul>
-                                    <li><i class="fas fa-vote-yea"></i> Democratic voting</li>
-                                    <li><i class="fas fa-comments"></i> Proposal system</li>
-                                    <li><i class="fas fa-landmark"></i> Treasury management</li>
-                                </ul>
-                            </div>
-                        ` : ''}
-                    </div>
-                    ${!phase.isGovernance ? `
-                        <div class="progress-container">
-                            <div class="progress-bar">
-                                <div class="progress" style="width: ${phase.progress}%"></div>
-                            </div>
-                            <div class="progress-info">
-                                <span class="progress-text">${phase.progress}% Complete</span>
-                                <span class="next-phase">Next Phase at ${phase.priceThreshold}</span>
-                            </div>
-                        </div>
-                    ` : ''}
+        phaseCard.innerHTML = `
+            <div class="phase-icon">${phase.icon}</div>
+            <div class="phase-content">
+                <div class="phase-header">
+                    <h3>Phase ${phase.id}: ${phase.name}</h3>
+                    ${phase.active ? '<span class="status active">Current Phase</span>' : ''}
                 </div>
-            `;
+                <div class="phase-details">
+                    <div class="detail-row">
+                        <span class="label">Price Target</span>
+                        <span class="value">${phase.priceThreshold}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Supply Boost</span>
+                        <span class="value">${phase.supplyInjection} BLOVE</span>
+                    </div>
+                    <p class="phase-description">${phase.description}</p>
+                    <div class="feature-list">${features}</div>
+                    ${governanceSection}
+                </div>
+                ${progressSection}
+            </div>`;
             
-            timeline.appendChild(phaseCard);
-        });
+        return phaseCard;
+    }
+    
+    init() {
+        try {
+            const phaseMonitor = document.getElementById('phase-monitor');
+            if (!phaseMonitor) {
+                console.warn('Phase monitor element not found');
+                return;
+            }
+            
+            // Create header
+            const header = document.createElement('div');
+            header.className = 'phase-header animate-on-scroll';
+            header.innerHTML = `
+                <h2>Evolution Phases</h2>
+                <p>Journey to Community-Driven Governance</p>`;
+            
+            // Create timeline container
+            const timeline = document.createElement('div');
+            timeline.className = 'phases-timeline';
+            
+            // Use DocumentFragment for batch insertion
+            const fragment = document.createDocumentFragment();
+            this.phases.forEach((phase, index) => {
+                fragment.appendChild(this.createPhaseCard(phase, index));
+            });
+            
+            timeline.appendChild(fragment);
+            
+            // Clear and update phase monitor
+            phaseMonitor.innerHTML = '';
+            phaseMonitor.appendChild(header);
+            phaseMonitor.appendChild(timeline);
+            
+        } catch (error) {
+            console.error('Error initializing phase monitor:', error);
+        }
     }
 }
 
 // Initialize when document is ready
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => new PhaseMonitor());
+} else {
     new PhaseMonitor();
-});
+}

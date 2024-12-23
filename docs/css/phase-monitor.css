@@ -234,6 +234,10 @@
     font-size: 1.2em;
 }
 
+.governance-header + p {
+    color: white;
+}
+
 .governance-info ul {
     list-style: none;
     padding: 0;
